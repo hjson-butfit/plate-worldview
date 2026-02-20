@@ -79,6 +79,10 @@
             border-top: 3px solid #3182f6;
         }
 
+        .main-tab-btn.prototype {
+            border-top: 3px solid #3182f6;
+        }
+
         /* 탭 콘텐츠 */
         .tab-content {
             display: none;
@@ -781,6 +785,7 @@
         <button class="main-tab-btn active" onclick="openMainTab('overview')">전체 구조</button>
         <button class="main-tab-btn acquire" onclick="openMainTab('acquire')">획득</button>
         <button class="main-tab-btn spend" onclick="openMainTab('spend')">소비</button>
+        <button class="main-tab-btn prototype" onclick="openMainTab('prototype')">프로토타입</button>
     </div>
 
     <!-- ==================== 전체 구조 탭 ==================== -->
@@ -3127,6 +3132,22 @@
             <h2>🔵 소비 파트</h2>
             <div class="placeholder" style="padding: 60px;">
                 <p>추후 설계 예정입니다</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 프로토타입 탭 ==================== -->
+    <div id="prototype" class="tab-content">
+        <div class="card">
+            <h2>🚀 프로토타입</h2>
+            <p style="font-size: 16px; color: #6b7684; margin-bottom: 20px;">
+                Claude Code와 함께 UI 프로토타입을 실시간으로 디자인하고 구성하는 공간입니다.
+            </p>
+            <div id="prototype-workspace" style="background: #f2f4f6; padding: 24px; border-radius: 12px; min-height: 300px;">
+                <p style="text-align: center; color: #b0b8c1; padding: 40px 20px;">
+                    여기에 프로토타입 UI가 표시됩니다.<br>
+                    <span style="font-size: 12px; color: #b0b8c1; margin-top: 8px; display: block;">Claude Code와 함께 실시간으로 구성할 수 있습니다.</span>
+                </p>
             </div>
         </div>
     </div>
