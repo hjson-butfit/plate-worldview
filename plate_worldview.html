@@ -865,6 +865,51 @@
             background: #b0b8c1;
             border-radius: 10px;
         }
+
+        /* 스크린 전환 애니메이션 */
+        .streak-home,
+        .streak-detail {
+            display: none;
+        }
+
+        .streak-home.active,
+        .streak-detail.active {
+            display: block;
+            animation: screenFadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes screenFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .streak-back-btn {
+            cursor: pointer;
+            padding: 8px 12px;
+            background: #333;
+            border-radius: 4px;
+            font-size: 14px;
+            color: white;
+            border: none;
+            transition: background 0.2s ease;
+        }
+
+        .streak-back-btn:hover {
+            background: #444;
+        }
+
+        .streak-clickable {
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .streak-clickable:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -3297,134 +3342,158 @@
                 <div id="streak" class="prototype-screen">
                     <div class="mobile-frame">
                         <div class="mobile-screen" style="background: #1a1a1a; color: white; padding: 0; overflow: hidden;">
-                            <!-- 모바일 헤더 -->
-                            <div style="padding: 8px 16px; display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; font-size: 13px;">
-                                <span>11:12 ↗</span>
-                                <div style="display: flex; gap: 4px;">
-                                    <span>📶</span>
-                                    <span>📡</span>
-                                    <span style="background: #666; padding: 2px 6px; border-radius: 3px; font-size: 11px;">73</span>
-                                </div>
-                            </div>
-
-                            <!-- 앱 헤더 -->
-                            <div style="padding: 16px; background: #1a1a1a; border-bottom: 1px solid #333;">
-                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                                    <div style="font-size: 20px; font-weight: bold; letter-spacing: 2px; color: #10b981;">BUTFITGROUND</div>
-                                    <div style="display: flex; gap: 12px; font-size: 12px; text-align: center;">
-                                        <div style="cursor: pointer;">📦<br><span style="font-size: 10px;">멤버십</span></div>
-                                        <div style="cursor: pointer;">🔔<br><span style="font-size: 10px;">알림</span></div>
-                                        <div style="cursor: pointer;">⬜<br><span style="font-size: 10px;">MY</span></div>
+                            <!-- 홈 화면 -->
+                            <div class="streak-home active" style="display: block; height: 100%; overflow-y: auto;">
+                                <!-- 모바일 헤더 -->
+                                <div style="padding: 8px 16px; display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; font-size: 13px;">
+                                    <span>11:12 ↗</span>
+                                    <div style="display: flex; gap: 4px;">
+                                        <span>📶</span>
+                                        <span>📡</span>
+                                        <span style="background: #666; padding: 2px 6px; border-radius: 3px; font-size: 11px;">73</span>
                                     </div>
                                 </div>
 
-                                <!-- 사용자 정보 -->
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <div style="display: flex; gap: 12px; align-items: center; flex: 1;">
-                                        <div style="width: 40px; height: 40px; background: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px;">👤</div>
-                                        <div>
-                                            <div style="font-weight: 600; font-size: 14px;">버핏쏘니</div>
-                                            <div style="font-size: 12px; color: #999;">역삼GFC점</div>
+                                <!-- 앱 헤더 -->
+                                <div style="padding: 16px; background: #1a1a1a; border-bottom: 1px solid #333;">
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                                        <div style="font-size: 20px; font-weight: bold; letter-spacing: 2px; color: #10b981;">BUTFITGROUND</div>
+                                        <div style="display: flex; gap: 12px; font-size: 12px; text-align: center;">
+                                            <div style="cursor: pointer;">📦<br><span style="font-size: 10px;">멤버십</span></div>
+                                            <div style="cursor: pointer;">🔔<br><span style="font-size: 10px;">알림</span></div>
+                                            <div style="cursor: pointer;">⬜<br><span style="font-size: 10px;">MY</span></div>
                                         </div>
                                     </div>
-                                    <button style="background: #10b981; color: black; border: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer;">괴적</button>
+
+                                    <!-- 사용자 정보 -->
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div style="display: flex; gap: 12px; align-items: center; flex: 1;">
+                                            <div style="width: 40px; height: 40px; background: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px;">👤</div>
+                                            <div>
+                                                <div style="font-weight: 600; font-size: 14px;">버핏쏘니</div>
+                                                <div style="font-size: 12px; color: #999;">역삼GFC점</div>
+                                            </div>
+                                        </div>
+                                        <button style="background: #10b981; color: black; border: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer;">괴적</button>
+                                    </div>
+                                </div>
+
+                                <!-- 바코드 섹션 -->
+                                <div style="padding: 16px; background: #1a1a1a;">
+                                    <div style="background: white; border-radius: 12px; padding: 16px; text-align: center;">
+                                        <div style="letter-spacing: 3px; font-size: 24px; color: black; margin-bottom: 8px; font-family: 'Courier New';">█ ██ █ █████ ██ ██ █ ███ █ █</div>
+                                        <div style="color: #666; font-size: 12px; cursor: pointer;">운동정보 확인하기 ▼</div>
+                                    </div>
+                                </div>
+
+                                <!-- 월/스트릭 정보 -->
+                                <div style="padding: 16px; border-top: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="font-size: 20px; font-weight: bold;">2026년 02월 ></div>
+                                    <div class="streak-clickable" onclick="showStreakDetail()" style="display: flex; align-items: center; gap: 4px; font-size: 16px;">
+                                        <span style="font-size: 24px;">🔥</span>
+                                        <span style="color: #10b981; font-weight: 600; font-size: 14px;">5주 연속 운동 중!</span>
+                                    </div>
+                                </div>
+
+                                <!-- 통계 박스 -->
+                                <div style="padding: 0 16px;">
+                                    <div style="background: #2a2a2a; border-radius: 8px; padding: 16px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; text-align: center; margin-bottom: 16px;">
+                                        <div style="border-right: 1px solid #444;">
+                                            <div style="font-size: 24px; font-weight: bold;">3일</div>
+                                            <div style="font-size: 11px; color: #999; margin-top: 4px;">목표 10일</div>
+                                        </div>
+                                        <div style="border-right: 1px solid #444;">
+                                            <div style="font-size: 24px; font-weight: bold;">5.7</div>
+                                            <div style="font-size: 11px; color: #999; margin-top: 4px;">km / month</div>
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 18px; font-weight: bold;">07'18"</div>
+                                            <div style="font-size: 11px; color: #999; margin-top: 4px;">pace / month</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 달력 -->
+                                <div style="padding: 0 16px 16px; overflow-y: auto;">
+                                    <div style="background: #2a2a2a; border-radius: 8px; padding: 16px;">
+                                        <!-- 요일 헤더 -->
+                                        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 12px; text-align: center;">
+                                            <div style="font-size: 12px; color: #999; font-weight: 600;">일</div>
+                                            <div style="font-size: 12px; color: #999; font-weight: 600;">월</div>
+                                            <div style="font-size: 12px; color: #999; font-weight: 600;">화</div>
+                                            <div style="font-size: 12px; color: #999; font-weight: 600;">수</div>
+                                            <div style="font-size: 12px; color: #999; font-weight: 600;">목</div>
+                                            <div style="font-size: 12px; color: #999; font-weight: 600;">금</div>
+                                            <div style="font-size: 12px; color: #999; font-weight: 600;">토</div>
+                                        </div>
+
+                                        <!-- 달력 날짜 -->
+                                        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; font-size: 13px;">
+                                            <!-- 1주 -->
+                                            <div style="padding: 8px; color: #999;">휴무일</div>
+                                            <div style="padding: 8px;">2</div>
+                                            <div style="padding: 8px; background: #10b981; border-radius: 4px; color: white;">❌</div>
+                                            <div style="padding: 8px; background: #10b981; border-radius: 4px; color: white;">❌</div>
+                                            <div style="padding: 8px;">5</div>
+                                            <div style="padding: 8px;">6</div>
+                                            <div style="padding: 8px;">7</div>
+                                            <!-- 2주 -->
+                                            <div style="padding: 8px;">8</div>
+                                            <div style="padding: 8px;">9</div>
+                                            <div style="padding: 8px;">10</div>
+                                            <div style="padding: 8px; background: #10b981; border-radius: 50%; color: white; font-weight: bold;">11</div>
+                                            <div style="padding: 8px;">12</div>
+                                            <div style="padding: 8px;">13</div>
+                                            <div style="padding: 8px;">14</div>
+                                            <!-- 3주 -->
+                                            <div style="padding: 8px; color: #999;">휴무일</div>
+                                            <div style="padding: 8px;">16</div>
+                                            <div style="padding: 8px; color: #999;">휴무일</div>
+                                            <div style="padding: 8px;">18</div>
+                                            <div style="padding: 8px;">19</div>
+                                            <div style="padding: 8px; color: #10b981; font-weight: bold;">20</div>
+                                            <div style="padding: 8px;">21</div>
+                                            <!-- 4주 -->
+                                            <div style="padding: 8px;">22</div>
+                                            <div style="padding: 8px;">23</div>
+                                            <div style="padding: 8px;">24</div>
+                                            <div style="padding: 8px;">25</div>
+                                            <div style="padding: 8px;">26</div>
+                                            <div style="padding: 8px;">27</div>
+                                            <div style="padding: 8px;">28</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 하단 네비게이션 -->
+                                <div style="padding: 12px; background: #1a1a1a; border-top: 1px solid #333; display: flex; justify-content: space-around; text-align: center; font-size: 12px;">
+                                    <div style="cursor: pointer; color: #10b981;">🏠<br><span style="font-size: 10px;">홈</span></div>
+                                    <div style="cursor: pointer; color: #666;">🏋️<br><span style="font-size: 10px;">PT</span></div>
+                                    <div style="cursor: pointer; color: #666;">🛍️<br><span style="font-size: 10px;">B스토어</span></div>
+                                    <div style="cursor: pointer; color: #666;">📅<br><span style="font-size: 10px;">클래스</span></div>
+                                    <div style="cursor: pointer; color: #666;">📊<br><span style="font-size: 10px;">유산소</span></div>
                                 </div>
                             </div>
 
-                            <!-- 바코드 섹션 -->
-                            <div style="padding: 16px; background: #1a1a1a;">
-                                <div style="background: white; border-radius: 12px; padding: 16px; text-align: center;">
-                                    <div style="letter-spacing: 3px; font-size: 24px; color: black; margin-bottom: 8px; font-family: 'Courier New';">█ ██ █ █████ ██ ██ █ ███ █ █</div>
-                                    <div style="color: #666; font-size: 12px; cursor: pointer;">운동정보 확인하기 ▼</div>
+                            <!-- 상세 화면 -->
+                            <div class="streak-detail" style="display: none; height: 100%; overflow-y: auto;">
+                                <!-- 상세 화면 헤더 -->
+                                <div style="padding: 12px 16px; background: #1a1a1a; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+                                    <button class="streak-back-btn" onclick="backToStreakHome()">← 뒤로</button>
+                                    <div style="font-size: 14px; font-weight: 600;">스트릭 히스토리</div>
+                                    <div style="width: 60px;"></div>
                                 </div>
-                            </div>
 
-                            <!-- 월/스트릭 정보 -->
-                            <div style="padding: 16px; border-top: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
-                                <div style="font-size: 20px; font-weight: bold;">2026년 02월 ></div>
-                                <div style="display: flex; align-items: center; gap: 4px; font-size: 16px;">
-                                    <span style="font-size: 24px;">🔥</span>
-                                    <span style="color: #10b981; font-weight: 600; font-size: 14px;">5주 연속 운동 중!</span>
-                                </div>
-                            </div>
-
-                            <!-- 통계 박스 -->
-                            <div style="padding: 0 16px;">
-                                <div style="background: #2a2a2a; border-radius: 8px; padding: 16px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; text-align: center; margin-bottom: 16px;">
-                                    <div style="border-right: 1px solid #444;">
-                                        <div style="font-size: 24px; font-weight: bold;">3일</div>
-                                        <div style="font-size: 11px; color: #999; margin-top: 4px;">목표 10일</div>
+                                <!-- 상세 화면 내용 (플레이스홀더) -->
+                                <div style="padding: 20px 16px; text-align: center;">
+                                    <div style="color: #999; font-size: 14px; margin-bottom: 16px;">
+                                        🔥 5주 연속 운동 중!
                                     </div>
-                                    <div style="border-right: 1px solid #444;">
-                                        <div style="font-size: 24px; font-weight: bold;">5.7</div>
-                                        <div style="font-size: 11px; color: #999; margin-top: 4px;">km / month</div>
-                                    </div>
-                                    <div>
-                                        <div style="font-size: 18px; font-weight: bold;">07'18"</div>
-                                        <div style="font-size: 11px; color: #999; margin-top: 4px;">pace / month</div>
+                                    <div style="background: #2a2a2a; padding: 32px 16px; border-radius: 8px;">
+                                        <p style="color: #999; margin: 0;">스트릭 히스토리 화면</p>
+                                        <p style="color: #666; font-size: 12px; margin-top: 8px;">레퍼런스 이미지를 바탕으로<br>구성될 상세 정보</p>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- 달력 -->
-                            <div style="padding: 0 16px 16px; overflow-y: auto;">
-                                <div style="background: #2a2a2a; border-radius: 8px; padding: 16px;">
-                                    <!-- 요일 헤더 -->
-                                    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 12px; text-align: center;">
-                                        <div style="font-size: 12px; color: #999; font-weight: 600;">일</div>
-                                        <div style="font-size: 12px; color: #999; font-weight: 600;">월</div>
-                                        <div style="font-size: 12px; color: #999; font-weight: 600;">화</div>
-                                        <div style="font-size: 12px; color: #999; font-weight: 600;">수</div>
-                                        <div style="font-size: 12px; color: #999; font-weight: 600;">목</div>
-                                        <div style="font-size: 12px; color: #999; font-weight: 600;">금</div>
-                                        <div style="font-size: 12px; color: #999; font-weight: 600;">토</div>
-                                    </div>
-
-                                    <!-- 달력 날짜 -->
-                                    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; font-size: 13px;">
-                                        <!-- 1주 -->
-                                        <div style="padding: 8px; color: #999;">휴무일</div>
-                                        <div style="padding: 8px;">2</div>
-                                        <div style="padding: 8px; background: #10b981; border-radius: 4px; color: white;">❌</div>
-                                        <div style="padding: 8px; background: #10b981; border-radius: 4px; color: white;">❌</div>
-                                        <div style="padding: 8px;">5</div>
-                                        <div style="padding: 8px;">6</div>
-                                        <div style="padding: 8px;">7</div>
-                                        <!-- 2주 -->
-                                        <div style="padding: 8px;">8</div>
-                                        <div style="padding: 8px;">9</div>
-                                        <div style="padding: 8px;">10</div>
-                                        <div style="padding: 8px; background: #10b981; border-radius: 50%; color: white; font-weight: bold;">11</div>
-                                        <div style="padding: 8px;">12</div>
-                                        <div style="padding: 8px;">13</div>
-                                        <div style="padding: 8px;">14</div>
-                                        <!-- 3주 -->
-                                        <div style="padding: 8px; color: #999;">휴무일</div>
-                                        <div style="padding: 8px;">16</div>
-                                        <div style="padding: 8px; color: #999;">휴무일</div>
-                                        <div style="padding: 8px;">18</div>
-                                        <div style="padding: 8px;">19</div>
-                                        <div style="padding: 8px; color: #10b981; font-weight: bold;">20</div>
-                                        <div style="padding: 8px;">21</div>
-                                        <!-- 4주 -->
-                                        <div style="padding: 8px;">22</div>
-                                        <div style="padding: 8px;">23</div>
-                                        <div style="padding: 8px;">24</div>
-                                        <div style="padding: 8px;">25</div>
-                                        <div style="padding: 8px;">26</div>
-                                        <div style="padding: 8px;">27</div>
-                                        <div style="padding: 8px;">28</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 하단 네비게이션 -->
-                            <div style="padding: 12px; background: #1a1a1a; border-top: 1px solid #333; display: flex; justify-content: space-around; text-align: center; font-size: 12px;">
-                                <div style="cursor: pointer; color: #10b981;">🏠<br><span style="font-size: 10px;">홈</span></div>
-                                <div style="cursor: pointer; color: #666;">🏋️<br><span style="font-size: 10px;">PT</span></div>
-                                <div style="cursor: pointer; color: #666;">🛍️<br><span style="font-size: 10px;">B스토어</span></div>
-                                <div style="cursor: pointer; color: #666;">📅<br><span style="font-size: 10px;">클래스</span></div>
-                                <div style="cursor: pointer; color: #666;">📊<br><span style="font-size: 10px;">유산소</span></div>
                             </div>
                         </div>
                     </div>
@@ -3495,6 +3564,20 @@
             document.querySelectorAll('.prototype-tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(screenName).classList.add('active');
             event.currentTarget.classList.add('active');
+        }
+
+        function showStreakDetail() {
+            const streakHome = document.querySelector('.streak-home');
+            const streakDetail = document.querySelector('.streak-detail');
+            if (streakHome) streakHome.classList.remove('active');
+            if (streakDetail) streakDetail.classList.add('active');
+        }
+
+        function backToStreakHome() {
+            const streakHome = document.querySelector('.streak-home');
+            const streakDetail = document.querySelector('.streak-detail');
+            if (streakDetail) streakDetail.classList.remove('active');
+            if (streakHome) streakHome.classList.add('active');
         }
 
         function toggleMissions(button, className) {
