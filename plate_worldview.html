@@ -775,6 +775,96 @@
             opacity: 0;
             margin-bottom: -20px;
         }
+
+        /* 프로토타입 화면 스타일 */
+        .prototype-tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #d1d6db;
+            overflow-x: auto;
+        }
+
+        .prototype-tab-btn {
+            padding: 12px 16px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: #6b7684;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .prototype-tab-btn:hover {
+            color: #10b981;
+        }
+
+        .prototype-tab-btn.active {
+            color: #10b981;
+            border-bottom-color: #10b981;
+        }
+
+        .prototype-screen {
+            display: none;
+            margin-top: 24px;
+        }
+
+        .prototype-screen.active {
+            display: block;
+        }
+
+        /* 모바일 폰 프레임 */
+        .mobile-frame {
+            width: 360px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #d1d6db;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mobile-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 28px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .mobile-screen {
+            width: 100%;
+            height: 720px;
+            background: white;
+            border-radius: 30px;
+            overflow-y: auto;
+            padding: 12px 12px;
+            margin-top: 28px;
+            box-sizing: border-box;
+        }
+
+        .mobile-screen::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .mobile-screen::-webkit-scrollbar-track {
+            background: #f2f4f6;
+            border-radius: 10px;
+        }
+
+        .mobile-screen::-webkit-scrollbar-thumb {
+            background: #b0b8c1;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -3110,13 +3200,165 @@
         <div class="card">
             <h2>🚀 프로토타입</h2>
             <p style="font-size: 16px; color: #6b7684; margin-bottom: 20px;">
-                Claude Code와 함께 UI 프로토타입을 실시간으로 디자인하고 구성하는 공간입니다.
+                Claude Code와 함께 모바일 앱 화면 UI를 실시간으로 디자인하고 구성하는 공간입니다.
             </p>
-            <div id="prototype-workspace" style="background: #f2f4f6; padding: 24px; border-radius: 12px; min-height: 300px;">
-                <p style="text-align: center; color: #b0b8c1; padding: 40px 20px;">
-                    여기에 프로토타입 UI가 표시됩니다.<br>
-                    <span style="font-size: 12px; color: #b0b8c1; margin-top: 8px; display: block;">Claude Code와 함께 실시간으로 구성할 수 있습니다.</span>
-                </p>
+
+            <!-- 프로토타입 탭 네비게이션 -->
+            <div class="prototype-tab-nav">
+                <button class="prototype-tab-btn active" onclick="openPrototypeScreen('main')">플레이트 메인</button>
+                <button class="prototype-tab-btn" onclick="openPrototypeScreen('mission')">일간/주간 미션</button>
+                <button class="prototype-tab-btn" onclick="openPrototypeScreen('streak')">버핏 스트릭</button>
+                <button class="prototype-tab-btn" onclick="openPrototypeScreen('growth')">주간 기록 갱신</button>
+            </div>
+
+            <!-- 모바일 UI 프레임 -->
+            <div style="display: flex; justify-content: center; margin-top: 32px;">
+                <!-- 화면 1: 플레이트 메인 -->
+                <div id="main" class="prototype-screen active">
+                    <div class="mobile-frame">
+                        <div class="mobile-screen">
+                            <h3 style="margin: 16px 0 8px 0; color: #191f28; font-size: 16px;">플레이트 흐름</h3>
+                            <p style="margin: 0 0 16px 0; color: #6b7684; font-size: 12px;">오늘의 플레이트 획득 현황을 확인하세요</p>
+
+                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 12px; padding: 20px; color: white; margin-bottom: 20px;">
+                                <p style="margin: 0 0 8px 0; opacity: 0.9;">오늘 획득한 플레이트</p>
+                                <h2 style="margin: 0; font-size: 32px;">3,200 PLT</h2>
+                                <p style="margin: 8px 0 0 0; opacity: 0.8;">목표: 5,000 PLT</p>
+                            </div>
+
+                            <div style="margin-bottom: 16px;">
+                                <h4 style="margin: 0 0 12px 0; color: #191f28; font-size: 14px;">일간 미션</h4>
+                                <div style="background: #f2f4f6; padding: 12px; border-radius: 8px; margin-bottom: 8px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="color: #191f28; font-size: 13px;">일간 출석 1회</span>
+                                        <span style="color: #10b981; font-weight: bold;">✓ 완료</span>
+                                    </div>
+                                    <p style="margin: 4px 0 0 0; color: #6b7684; font-size: 11px;">+ 2,000 PLT</p>
+                                </div>
+                                <div style="background: #f2f4f6; padding: 12px; border-radius: 8px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="color: #191f28; font-size: 13px;">유산소 2km</span>
+                                        <span style="color: #f59e0b; font-weight: bold;">진행중</span>
+                                    </div>
+                                    <div style="width: 100%; height: 4px; background: #e5e7eb; border-radius: 2px; margin-top: 4px;">
+                                        <div style="width: 40%; height: 100%; background: #f59e0b; border-radius: 2px;"></div>
+                                    </div>
+                                    <p style="margin: 4px 0 0 0; color: #6b7684; font-size: 11px;">0.8km / 2km</p>
+                                </div>
+                            </div>
+
+                            <div style="text-align: center; padding-bottom: 20px; color: #6b7684; font-size: 12px;">
+                                👉 더보기
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 화면 2: 일간/주간 미션 -->
+                <div id="mission" class="prototype-screen">
+                    <div class="mobile-frame">
+                        <div class="mobile-screen">
+                            <h3 style="margin: 16px 0 8px 0; color: #191f28; font-size: 16px;">미션</h3>
+                            <p style="margin: 0 0 16px 0; color: #6b7684; font-size: 12px;">플레이트를 획득하기 위한 미션들</p>
+
+                            <div style="margin-bottom: 20px;">
+                                <h4 style="margin: 0 0 12px 0; color: #191f28; font-size: 13px; font-weight: 600;">📅 일간 미션</h4>
+                                <div style="background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: #191f28; font-size: 13px; font-weight: 500;">출석 1회</span>
+                                        <span style="color: #10b981; font-weight: bold;">완료</span>
+                                    </div>
+                                    <p style="margin: 4px 0 0 0; color: #6b7684; font-size: 11px;">+2,000 PLT</p>
+                                </div>
+                                <div style="background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px;">
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: #191f28; font-size: 13px; font-weight: 500;">유산소 2km</span>
+                                        <span style="color: #f59e0b;">진행중</span>
+                                    </div>
+                                    <p style="margin: 4px 0 0 0; color: #6b7684; font-size: 11px;">+1,000 PLT</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 style="margin: 0 0 12px 0; color: #191f28; font-size: 13px; font-weight: 600;">📊 주간 미션</h4>
+                                <div style="background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span style="color: #191f28; font-size: 13px; font-weight: 500;">출석 3회</span>
+                                        <span style="color: #ef4444;">미충족</span>
+                                    </div>
+                                    <p style="margin: 4px 0 0 0; color: #6b7684; font-size: 11px;">+1,000 PLT | 1/3 완료</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 화면 3: 버핏 스트릭 -->
+                <div id="streak" class="prototype-screen">
+                    <div class="mobile-frame">
+                        <div class="mobile-screen">
+                            <h3 style="margin: 16px 0 8px 0; color: #191f28; font-size: 16px;">버핏 스트릭</h3>
+                            <p style="margin: 0 0 16px 0; color: #6b7684; font-size: 12px;">연속 운동 기록을 유지하세요</p>
+
+                            <div style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: 12px; padding: 20px; color: white; margin-bottom: 20px; text-align: center;">
+                                <p style="margin: 0 0 8px 0; opacity: 0.9; font-size: 12px;">현재 스트릭</p>
+                                <h1 style="margin: 0; font-size: 48px; font-weight: bold;">12</h1>
+                                <p style="margin: 8px 0 0 0; opacity: 0.9;">일 연속 운동</p>
+                            </div>
+
+                            <div style="background: #fff3cd; border-left: 4px solid #f59e0b; padding: 12px; border-radius: 4px; margin-bottom: 20px;">
+                                <p style="margin: 0; color: #856404; font-size: 12px;">⚠️ <strong>스트릭 유지까지 1일 남았습니다!</strong></p>
+                            </div>
+
+                            <div style="text-align: center; padding: 20px; background: #f2f4f6; border-radius: 8px;">
+                                <p style="margin: 0; color: #191f28; font-size: 13px; font-weight: 500;">📍 오늘 운동하면</p>
+                                <p style="margin: 4px 0 0 0; color: #10b981; font-size: 14px; font-weight: bold;">스트릭 +1 & 보너스 플레이트</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 화면 4: 주간 기록 갱신 -->
+                <div id="growth" class="prototype-screen">
+                    <div class="mobile-frame">
+                        <div class="mobile-screen">
+                            <h3 style="margin: 16px 0 8px 0; color: #191f28; font-size: 16px;">주간 기록</h3>
+                            <p style="margin: 0 0 16px 0; color: #6b7684; font-size: 12px;">이번 주 운동 기록 현황</p>
+
+                            <div style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); border-radius: 12px; padding: 20px; color: white; margin-bottom: 20px;">
+                                <p style="margin: 0 0 8px 0; opacity: 0.9;">이번 주 최고 기록</p>
+                                <h2 style="margin: 0; font-size: 28px;">트레드밀 12.5km</h2>
+                                <p style="margin: 8px 0 0 0; opacity: 0.8;">토요일</p>
+                            </div>
+
+                            <div style="margin-bottom: 16px;">
+                                <h4 style="margin: 0 0 12px 0; color: #191f28; font-size: 13px; font-weight: 600;">📈 종목별 기록</h4>
+                                <div style="background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                        <span style="color: #191f28; font-size: 13px;">트레드밀</span>
+                                        <span style="color: #3b82f6; font-weight: bold;">12.5km ↑</span>
+                                    </div>
+                                    <div style="width: 100%; height: 3px; background: #e5e7eb; border-radius: 2px;">
+                                        <div style="width: 60%; height: 100%; background: #3b82f6; border-radius: 2px;"></div>
+                                    </div>
+                                </div>
+                                <div style="background: white; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                        <span style="color: #191f28; font-size: 13px;">사이클</span>
+                                        <span style="color: #6b7684;">8.2km</span>
+                                    </div>
+                                    <div style="width: 100%; height: 3px; background: #e5e7eb; border-radius: 2px;">
+                                        <div style="width: 35%; height: 100%; background: #10b981; border-radius: 2px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #d1d6db;">
+                <p style="color: #6b7684; font-size: 13px; text-align: center;">💡 각 화면을 클릭하여 확인하고, 함께 개선할 부분이 있으면 알려주세요!</p>
             </div>
         </div>
     </div>
@@ -3133,6 +3375,13 @@
             document.querySelectorAll('.sub-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function openPrototypeScreen(screenName) {
+            document.querySelectorAll('.prototype-screen').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.prototype-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(screenName).classList.add('active');
             event.currentTarget.classList.add('active');
         }
 
