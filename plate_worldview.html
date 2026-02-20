@@ -3477,21 +3477,130 @@
 
                             <!-- 상세 화면 -->
                             <div class="streak-detail" style="display: none; height: 100%; overflow-y: auto;">
-                                <!-- 상세 화면 헤더 -->
-                                <div style="padding: 12px 16px; background: #1a1a1a; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
-                                    <button class="streak-back-btn" onclick="backToStreakHome()">← 뒤로</button>
-                                    <div style="font-size: 14px; font-weight: 600;">스트릭 히스토리</div>
-                                    <div style="width: 60px;"></div>
+                                <!-- 모바일 헤더 -->
+                                <div style="padding: 8px 16px; display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; font-size: 13px; border-bottom: 1px solid #333;">
+                                    <span>11:20 🌙</span>
+                                    <div style="display: flex; gap: 4px;">
+                                        <span>📶</span>
+                                        <span>📡</span>
+                                        <span style="background: #666; padding: 2px 6px; border-radius: 3px; font-size: 11px;">71</span>
+                                    </div>
                                 </div>
 
-                                <!-- 상세 화면 내용 (플레이스홀더) -->
-                                <div style="padding: 20px 16px; text-align: center;">
-                                    <div style="color: #999; font-size: 14px; margin-bottom: 16px;">
-                                        🔥 5주 연속 운동 중!
+                                <!-- 상세 화면 헤더 -->
+                                <div style="padding: 12px 16px; background: #1a1a1a; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+                                    <button onclick="backToStreakHome()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: white;">✕</button>
+                                    <div style="font-size: 16px; font-weight: 600; color: white;">Streak</div>
+                                    <button style="background: none; border: none; font-size: 20px; cursor: pointer; color: white;">⬆️</button>
+                                </div>
+
+                                <!-- 탭 -->
+                                <div style="padding: 12px 16px; background: #1a1a1a; border-bottom: 1px solid #333; display: flex; gap: 24px;">
+                                    <div style="color: #10b981; font-weight: 600; font-size: 13px; border-bottom: 3px solid #10b981; padding-bottom: 8px;">PERSONAL</div>
+                                    <div style="color: #666; font-weight: 600; font-size: 13px; cursor: pointer;">FRIENDS</div>
+                                </div>
+
+                                <!-- 메인 콘텐츠 -->
+                                <div style="padding: 24px 16px; background: #1a1a1a;">
+                                    <!-- 스트릭 숫자와 아이콘 -->
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                                        <div>
+                                            <div style="font-size: 56px; font-weight: bold; color: #10b981; line-height: 1;">366</div>
+                                            <div style="font-size: 20px; font-weight: 600; color: #10b981; margin-top: 4px;">day streak!</div>
+                                        </div>
+                                        <div style="font-size: 80px;">🔥</div>
                                     </div>
-                                    <div style="background: #2a2a2a; padding: 32px 16px; border-radius: 8px;">
-                                        <p style="color: #999; margin: 0;">스트릭 히스토리 화면</p>
-                                        <p style="color: #666; font-size: 12px; margin-top: 8px;">레퍼런스 이미지를 바탕으로<br>구성될 상세 정보</p>
+
+                                    <!-- 설명 -->
+                                    <div style="background: #2a2a2a; border-radius: 12px; padding: 16px; margin-bottom: 24px; display: flex; gap: 12px; align-items: flex-start;">
+                                        <div style="font-size: 24px; flex-shrink: 0;">🔥</div>
+                                        <div style="color: white; font-size: 13px; line-height: 1.6;">
+                                            Keep your <span style="color: #10b981; font-weight: 600;">Perfect Streak</span> by doing a lesson every day!
+                                        </div>
+                                    </div>
+
+                                    <!-- 월/네비게이션 -->
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                                        <div style="font-size: 18px; font-weight: 600; color: white;">February 2026</div>
+                                        <div style="display: flex; gap: 8px;">
+                                            <button style="background: none; border: none; font-size: 20px; cursor: pointer; color: #666;">‹</button>
+                                            <button style="background: none; border: none; font-size: 20px; cursor: pointer; color: #666;">›</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Perfect 배지와 통계 -->
+                                    <div style="position: relative; margin-bottom: 16px;">
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                            <div style="background: #2a2a2a; border-radius: 12px; padding: 16px; text-align: center; position: relative;">
+                                                <div style="font-size: 24px; margin-bottom: 8px;">🔥</div>
+                                                <div style="font-size: 20px; font-weight: bold; color: #10b981;">20</div>
+                                                <div style="font-size: 11px; color: #999; margin-top: 4px;">Days practiced</div>
+                                                <div style="position: absolute; top: -8px; left: 50%; transform: translateX(-50%); background: #10b981; color: black; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 600;">PERFECT</div>
+                                            </div>
+                                            <div style="background: #2a2a2a; border-radius: 12px; padding: 16px; text-align: center;">
+                                                <div style="font-size: 24px; margin-bottom: 8px;">❄️</div>
+                                                <div style="font-size: 20px; font-weight: bold; color: white;">0</div>
+                                                <div style="font-size: 11px; color: #999; margin-top: 4px;">Freezes used</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 달력 -->
+                                    <div style="background: #2a2a2a; border-radius: 12px; padding: 16px;">
+                                        <!-- 요일 헤더 -->
+                                        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 12px; text-align: center;">
+                                            <div style="font-size: 11px; color: #999; font-weight: 600;">Su</div>
+                                            <div style="font-size: 11px; color: #999; font-weight: 600;">Mo</div>
+                                            <div style="font-size: 11px; color: #999; font-weight: 600;">Tu</div>
+                                            <div style="font-size: 11px; color: #999; font-weight: 600;">We</div>
+                                            <div style="font-size: 11px; color: #999; font-weight: 600;">Th</div>
+                                            <div style="font-size: 11px; color: #999; font-weight: 600;">Fr</div>
+                                            <div style="font-size: 11px; color: #999; font-weight: 600;">Sa</div>
+                                        </div>
+
+                                        <!-- 1주 -->
+                                        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 8px;">
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">1</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">2</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">3</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">4</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">5</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">6</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">7</div>
+                                        </div>
+
+                                        <!-- 2주 -->
+                                        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 8px;">
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">8</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">9</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">10</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">11</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">12</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">13</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">14</div>
+                                        </div>
+
+                                        <!-- 3주 -->
+                                        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 8px;">
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">15</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">16</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">17</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">18</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">19</div>
+                                            <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; padding: 10px; text-align: center; color: white; font-weight: 600; font-size: 12px;">20</div>
+                                            <div style="color: #666; padding: 10px; text-align: center; font-size: 12px;">21</div>
+                                        </div>
+
+                                        <!-- 4주 -->
+                                        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;">
+                                            <div style="color: #666; padding: 10px; text-align: center; font-size: 12px;">22</div>
+                                            <div style="color: #666; padding: 10px; text-align: center; font-size: 12px;">23</div>
+                                            <div style="color: #666; padding: 10px; text-align: center; font-size: 12px;">24</div>
+                                            <div style="color: #666; padding: 10px; text-align: center; font-size: 12px;">25</div>
+                                            <div style="color: #666; padding: 10px; text-align: center; font-size: 12px;">26</div>
+                                            <div style="color: #666; padding: 10px; text-align: center; font-size: 12px;">27</div>
+                                            <div style="color: #666; padding: 10px; text-align: center; font-size: 12px;">28</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
