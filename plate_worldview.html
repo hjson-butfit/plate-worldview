@@ -3296,23 +3296,135 @@
                 <!-- 화면 3: 버핏 스트릭 -->
                 <div id="streak" class="prototype-screen">
                     <div class="mobile-frame">
-                        <div class="mobile-screen">
-                            <h3 style="margin: 16px 0 8px 0; color: #191f28; font-size: 16px;">버핏 스트릭</h3>
-                            <p style="margin: 0 0 16px 0; color: #6b7684; font-size: 12px;">연속 운동 기록을 유지하세요</p>
-
-                            <div style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius: 12px; padding: 20px; color: white; margin-bottom: 20px; text-align: center;">
-                                <p style="margin: 0 0 8px 0; opacity: 0.9; font-size: 12px;">현재 스트릭</p>
-                                <h1 style="margin: 0; font-size: 48px; font-weight: bold;">12</h1>
-                                <p style="margin: 8px 0 0 0; opacity: 0.9;">일 연속 운동</p>
+                        <div class="mobile-screen" style="background: #1a1a1a; color: white; padding: 0; overflow: hidden;">
+                            <!-- 모바일 헤더 -->
+                            <div style="padding: 8px 16px; display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; font-size: 13px;">
+                                <span>11:12 ↗</span>
+                                <div style="display: flex; gap: 4px;">
+                                    <span>📶</span>
+                                    <span>📡</span>
+                                    <span style="background: #666; padding: 2px 6px; border-radius: 3px; font-size: 11px;">73</span>
+                                </div>
                             </div>
 
-                            <div style="background: #fff3cd; border-left: 4px solid #f59e0b; padding: 12px; border-radius: 4px; margin-bottom: 20px;">
-                                <p style="margin: 0; color: #856404; font-size: 12px;">⚠️ <strong>스트릭 유지까지 1일 남았습니다!</strong></p>
+                            <!-- 앱 헤더 -->
+                            <div style="padding: 16px; background: #1a1a1a; border-bottom: 1px solid #333;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                                    <div style="font-size: 20px; font-weight: bold; letter-spacing: 2px; color: #10b981;">BUTFITGROUND</div>
+                                    <div style="display: flex; gap: 12px; font-size: 12px; text-align: center;">
+                                        <div style="cursor: pointer;">📦<br><span style="font-size: 10px;">멤버십</span></div>
+                                        <div style="cursor: pointer;">🔔<br><span style="font-size: 10px;">알림</span></div>
+                                        <div style="cursor: pointer;">⬜<br><span style="font-size: 10px;">MY</span></div>
+                                    </div>
+                                </div>
+
+                                <!-- 사용자 정보 -->
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; gap: 12px; align-items: center; flex: 1;">
+                                        <div style="width: 40px; height: 40px; background: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px;">👤</div>
+                                        <div>
+                                            <div style="font-weight: 600; font-size: 14px;">버핏쏘니</div>
+                                            <div style="font-size: 12px; color: #999;">역삼GFC점</div>
+                                        </div>
+                                    </div>
+                                    <button style="background: #10b981; color: black; border: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer;">괴적</button>
+                                </div>
                             </div>
 
-                            <div style="text-align: center; padding: 20px; background: #f2f4f6; border-radius: 8px;">
-                                <p style="margin: 0; color: #191f28; font-size: 13px; font-weight: 500;">📍 오늘 운동하면</p>
-                                <p style="margin: 4px 0 0 0; color: #10b981; font-size: 14px; font-weight: bold;">스트릭 +1 & 보너스 플레이트</p>
+                            <!-- 바코드 섹션 -->
+                            <div style="padding: 16px; background: #1a1a1a;">
+                                <div style="background: white; border-radius: 12px; padding: 16px; text-align: center;">
+                                    <div style="letter-spacing: 3px; font-size: 24px; color: black; margin-bottom: 8px; font-family: 'Courier New';">█ ██ █ █████ ██ ██ █ ███ █ █</div>
+                                    <div style="color: #666; font-size: 12px; cursor: pointer;">운동정보 확인하기 ▼</div>
+                                </div>
+                            </div>
+
+                            <!-- 월/스트릭 정보 -->
+                            <div style="padding: 16px; border-top: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+                                <div style="font-size: 20px; font-weight: bold;">2026년 02월 ></div>
+                                <div style="display: flex; align-items: center; gap: 4px; font-size: 16px;">
+                                    <span style="font-size: 24px;">🔥</span>
+                                    <span style="color: #10b981; font-weight: 600; font-size: 14px;">5주 연속 운동 중!</span>
+                                </div>
+                            </div>
+
+                            <!-- 통계 박스 -->
+                            <div style="padding: 0 16px;">
+                                <div style="background: #2a2a2a; border-radius: 8px; padding: 16px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; text-align: center; margin-bottom: 16px;">
+                                    <div style="border-right: 1px solid #444;">
+                                        <div style="font-size: 24px; font-weight: bold;">3일</div>
+                                        <div style="font-size: 11px; color: #999; margin-top: 4px;">목표 10일</div>
+                                    </div>
+                                    <div style="border-right: 1px solid #444;">
+                                        <div style="font-size: 24px; font-weight: bold;">5.7</div>
+                                        <div style="font-size: 11px; color: #999; margin-top: 4px;">km / month</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 18px; font-weight: bold;">07'18"</div>
+                                        <div style="font-size: 11px; color: #999; margin-top: 4px;">pace / month</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 달력 -->
+                            <div style="padding: 0 16px 16px; overflow-y: auto;">
+                                <div style="background: #2a2a2a; border-radius: 8px; padding: 16px;">
+                                    <!-- 요일 헤더 -->
+                                    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 12px; text-align: center;">
+                                        <div style="font-size: 12px; color: #999; font-weight: 600;">일</div>
+                                        <div style="font-size: 12px; color: #999; font-weight: 600;">월</div>
+                                        <div style="font-size: 12px; color: #999; font-weight: 600;">화</div>
+                                        <div style="font-size: 12px; color: #999; font-weight: 600;">수</div>
+                                        <div style="font-size: 12px; color: #999; font-weight: 600;">목</div>
+                                        <div style="font-size: 12px; color: #999; font-weight: 600;">금</div>
+                                        <div style="font-size: 12px; color: #999; font-weight: 600;">토</div>
+                                    </div>
+
+                                    <!-- 달력 날짜 -->
+                                    <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; font-size: 13px;">
+                                        <!-- 1주 -->
+                                        <div style="padding: 8px; color: #999;">휴무일</div>
+                                        <div style="padding: 8px;">2</div>
+                                        <div style="padding: 8px; background: #10b981; border-radius: 4px; color: white;">❌</div>
+                                        <div style="padding: 8px; background: #10b981; border-radius: 4px; color: white;">❌</div>
+                                        <div style="padding: 8px;">5</div>
+                                        <div style="padding: 8px;">6</div>
+                                        <div style="padding: 8px;">7</div>
+                                        <!-- 2주 -->
+                                        <div style="padding: 8px;">8</div>
+                                        <div style="padding: 8px;">9</div>
+                                        <div style="padding: 8px;">10</div>
+                                        <div style="padding: 8px; background: #10b981; border-radius: 50%; color: white; font-weight: bold;">11</div>
+                                        <div style="padding: 8px;">12</div>
+                                        <div style="padding: 8px;">13</div>
+                                        <div style="padding: 8px;">14</div>
+                                        <!-- 3주 -->
+                                        <div style="padding: 8px; color: #999;">휴무일</div>
+                                        <div style="padding: 8px;">16</div>
+                                        <div style="padding: 8px; color: #999;">휴무일</div>
+                                        <div style="padding: 8px;">18</div>
+                                        <div style="padding: 8px;">19</div>
+                                        <div style="padding: 8px; color: #10b981; font-weight: bold;">20</div>
+                                        <div style="padding: 8px;">21</div>
+                                        <!-- 4주 -->
+                                        <div style="padding: 8px;">22</div>
+                                        <div style="padding: 8px;">23</div>
+                                        <div style="padding: 8px;">24</div>
+                                        <div style="padding: 8px;">25</div>
+                                        <div style="padding: 8px;">26</div>
+                                        <div style="padding: 8px;">27</div>
+                                        <div style="padding: 8px;">28</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 하단 네비게이션 -->
+                            <div style="padding: 12px; background: #1a1a1a; border-top: 1px solid #333; display: flex; justify-content: space-around; text-align: center; font-size: 12px;">
+                                <div style="cursor: pointer; color: #10b981;">🏠<br><span style="font-size: 10px;">홈</span></div>
+                                <div style="cursor: pointer; color: #666;">🏋️<br><span style="font-size: 10px;">PT</span></div>
+                                <div style="cursor: pointer; color: #666;">🛍️<br><span style="font-size: 10px;">B스토어</span></div>
+                                <div style="cursor: pointer; color: #666;">📅<br><span style="font-size: 10px;">클래스</span></div>
+                                <div style="cursor: pointer; color: #666;">📊<br><span style="font-size: 10px;">유산소</span></div>
                             </div>
                         </div>
                     </div>
